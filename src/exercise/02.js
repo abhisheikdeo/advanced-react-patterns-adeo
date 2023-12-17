@@ -5,7 +5,7 @@ import * as React from 'react'
 import {Switch} from '../switch'
 
 function Toggle() {
-  const [on, setOn] = React.useState(false)
+  const [ on, setOn ] = React.useState(false)
   const toggle = () => setOn(!on)
 
   // 🐨 replace this with a call to React.Children.map and map each child in

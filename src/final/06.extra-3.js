@@ -8,8 +8,8 @@ import {Switch} from '../switch'
 
 const callAll =
   (...fns) =>
-  (...args) =>
-    fns.forEach(fn => fn?.(...args))
+    (...args) =>
+      fns.forEach(fn => fn?.(...args))
 
 const actionTypes = {
   toggle: 'toggle',
@@ -47,7 +47,7 @@ function useControlledSwitchWarning(
       !(!isControlled && wasControlled),
       `\`${componentName}\` is changing from controlled to be uncontrolled. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled \`${componentName}\` for the lifetime of the component. Check the \`${controlPropName}\` prop.`,
     )
-  }, [componentName, controlPropName, isControlled, wasControlled])
+  }, [ componentName, controlPropName, isControlled, wasControlled ])
 }
 
 function useOnChangeReadOnlyWarning(
@@ -79,14 +79,14 @@ function useOnChangeReadOnlyWarning(
 }
 
 function useToggle({
-  initialOn = false,
-  reducer = toggleReducer,
-  onChange,
-  on: controlledOn,
-  readOnly = false,
-} = {}) {
+                     initialOn = false,
+                     reducer = toggleReducer,
+                     onChange,
+                     on: controlledOn,
+                     readOnly = false,
+                   } = {}) {
   const {current: initialState} = React.useRef({on: initialOn})
-  const [state, dispatch] = React.useReducer(reducer, initialState)
+  const [ state, dispatch ] = React.useReducer(reducer, initialState)
 
   const onIsControlled = controlledOn != null
   const on = onIsControlled ? controlledOn : state.on
@@ -151,8 +151,8 @@ function Toggle({on: controlledOn, onChange, readOnly, initialOn, reducer}) {
 }
 
 function App() {
-  const [bothOn, setBothOn] = React.useState(false)
-  const [timesClicked, setTimesClicked] = React.useState(0)
+  const [ bothOn, setBothOn ] = React.useState(false)
+  const [ timesClicked, setTimesClicked ] = React.useState(0)
 
   function handleToggleChange(state, action) {
     if (action.type === actionTypes.toggle && timesClicked > 4) {

@@ -8,8 +8,8 @@ import {Switch} from '../switch'
 
 const callAll =
   (...fns) =>
-  (...args) =>
-    fns.forEach(fn => fn?.(...args))
+    (...args) =>
+      fns.forEach(fn => fn?.(...args))
 
 const actionTypes = {
   toggle: 'toggle',
@@ -31,14 +31,14 @@ function toggleReducer(state, {type, initialState}) {
 }
 
 function useToggle({
-  initialOn = false,
-  reducer = toggleReducer,
-  onChange,
-  on: controlledOn,
-  readOnly = false,
-} = {}) {
+                     initialOn = false,
+                     reducer = toggleReducer,
+                     onChange,
+                     on: controlledOn,
+                     readOnly = false,
+                   } = {}) {
   const {current: initialState} = React.useRef({on: initialOn})
-  const [state, dispatch] = React.useReducer(reducer, initialState)
+  const [ state, dispatch ] = React.useReducer(reducer, initialState)
 
   const onIsControlled = controlledOn != null
   const on = onIsControlled ? controlledOn : state.on
@@ -53,7 +53,7 @@ function useToggle({
       !(!onIsControlled && onWasControlled),
       `\`useToggle\` is changing from controlled to be uncontrolled. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled \`useToggle\` for the lifetime of the component. Check the \`on\` prop.`,
     )
-  }, [onIsControlled, onWasControlled])
+  }, [ onIsControlled, onWasControlled ])
 
   const hasOnChange = Boolean(onChange)
   React.useEffect(() => {
@@ -61,7 +61,7 @@ function useToggle({
       !(!hasOnChange && onIsControlled && !readOnly),
       `An \`on\` prop was provided to useToggle without an \`onChange\` handler. This will render a read-only toggle. If you want it to be mutable, use \`initialOn\`. Otherwise, set either \`onChange\` or \`readOnly\`.`,
     )
-  }, [hasOnChange, onIsControlled, readOnly])
+  }, [ hasOnChange, onIsControlled, readOnly ])
 
   function dispatchWithOnChange(action) {
     if (!onIsControlled) {
@@ -111,8 +111,8 @@ function Toggle({on: controlledOn, onChange, readOnly, initialOn, reducer}) {
 }
 
 function App() {
-  const [bothOn, setBothOn] = React.useState(false)
-  const [timesClicked, setTimesClicked] = React.useState(0)
+  const [ bothOn, setBothOn ] = React.useState(false)
+  const [ timesClicked, setTimesClicked ] = React.useState(0)
 
   function handleToggleChange(state, action) {
     if (action.type === actionTypes.toggle && timesClicked > 4) {

@@ -8,7 +8,7 @@ import {Switch} from '../switch'
 // 📜 https://react.dev/reference/react/createContext
 
 function Toggle({children}) {
-  const [on, setOn] = React.useState(false)
+  const [ on, setOn ] = React.useState(false)
   const toggle = () => setOn(!on)
 
   // 🐨 remove all this 💣 and instead return <ToggleContext.Provider> where

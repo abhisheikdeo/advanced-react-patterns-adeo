@@ -6,7 +6,7 @@ import * as React from 'react'
 const CounterContext = React.createContext()
 
 function CounterProvider({step = 1, initialCount = 0, ...props}) {
-  const [state, dispatch] = React.useReducer(
+  const [ state, dispatch ] = React.useReducer(
     (state, action) => {
       const change = action.step ?? step
       switch (action.type) {
@@ -24,7 +24,7 @@ function CounterProvider({step = 1, initialCount = 0, ...props}) {
     {count: initialCount},
   )
 
-  return <CounterContext.Provider value={[state, dispatch]} {...props} />
+  return <CounterContext.Provider value={[ state, dispatch ]} {...props} />
 }
 
 function useCounter() {
@@ -41,7 +41,7 @@ function useCounter() {
 // import {useCounter} from 'context/counter'
 
 function Counter() {
-  const [state, dispatch] = useCounter()
+  const [ state, dispatch ] = useCounter()
   const increment = () => dispatch({type: 'increment'})
   const decrement = () => dispatch({type: 'decrement'})
   return (

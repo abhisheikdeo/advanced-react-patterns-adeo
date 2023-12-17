@@ -55,13 +55,13 @@ function userReducer(state, action) {
 
 function UserProvider({children}) {
   const {user} = useAuth()
-  const [state, dispatch] = React.useReducer(userReducer, {
+  const [ state, dispatch ] = React.useReducer(userReducer, {
     status: null,
     error: null,
     storedUser: user,
     user,
   })
-  const value = [state, dispatch]
+  const value = [ state, dispatch ]
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>
 }
 
@@ -92,12 +92,12 @@ async function updateUser(dispatch, user, updates) {
 // src/screens/user-profile.js
 // import {UserProvider, useUser, updateUser} from './context/user-context'
 function UserSettings() {
-  const [{user, status, error}, userDispatch] = useUser()
+  const [ {user, status, error}, userDispatch ] = useUser()
 
   const isPending = status === 'pending'
   const isRejected = status === 'rejected'
 
-  const [formState, setFormState] = React.useState(user)
+  const [ formState, setFormState ] = React.useState(user)
 
   const isChanged = !dequal(user, formState)
 
@@ -169,10 +169,10 @@ function UserSettings() {
           {isPending
             ? '...'
             : isRejected
-            ? '✖ Try again'
-            : isChanged
-            ? 'Submit'
-            : '✔'}
+              ? '✖ Try again'
+              : isChanged
+                ? 'Submit'
+                : '✔'}
         </button>
         {isRejected ? <pre style={{color: 'red'}}>{error.message}</pre> : null}
       </div>
@@ -181,7 +181,7 @@ function UserSettings() {
 }
 
 function UserDataDisplay() {
-  const [{user}] = useUser()
+  const [ {user} ] = useUser()
   return <pre>{JSON.stringify(user, null, 2)}</pre>
 }
 

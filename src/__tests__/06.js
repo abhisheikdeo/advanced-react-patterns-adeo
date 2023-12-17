@@ -6,7 +6,7 @@ import App, {Toggle} from '../final/06'
 test('toggling either toggle toggles both', async () => {
   renderToggle(<App />)
   const buttons = screen.getAllByTestId('toggle-input')
-  const [toggleButton1, toggleButton2] = buttons
+  const [ toggleButton1, toggleButton2 ] = buttons
   await userEvent.click(toggleButton1)
   expect(toggleButton1).toBeChecked()
   expect(toggleButton2).toBeChecked()

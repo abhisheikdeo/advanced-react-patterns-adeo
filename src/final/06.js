@@ -6,8 +6,8 @@ import {Switch} from '../switch'
 
 const callAll =
   (...fns) =>
-  (...args) =>
-    fns.forEach(fn => fn?.(...args))
+    (...args) =>
+      fns.forEach(fn => fn?.(...args))
 
 const actionTypes = {
   toggle: 'toggle',
@@ -29,13 +29,13 @@ function toggleReducer(state, {type, initialState}) {
 }
 
 function useToggle({
-  initialOn = false,
-  reducer = toggleReducer,
-  onChange,
-  on: controlledOn,
-} = {}) {
+                     initialOn = false,
+                     reducer = toggleReducer,
+                     onChange,
+                     on: controlledOn,
+                   } = {}) {
   const {current: initialState} = React.useRef({on: initialOn})
-  const [state, dispatch] = React.useReducer(reducer, initialState)
+  const [ state, dispatch ] = React.useReducer(reducer, initialState)
   const onIsControlled = controlledOn != null
   const on = onIsControlled ? controlledOn : state.on
 
@@ -86,8 +86,8 @@ function Toggle({on: controlledOn, onChange, initialOn, reducer}) {
 }
 
 function App() {
-  const [bothOn, setBothOn] = React.useState(false)
-  const [timesClicked, setTimesClicked] = React.useState(0)
+  const [ bothOn, setBothOn ] = React.useState(false)
+  const [ timesClicked, setTimesClicked ] = React.useState(0)
 
   function handleToggleChange(state, action) {
     if (action.type === actionTypes.toggle && timesClicked > 4) {

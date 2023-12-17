@@ -11,7 +11,8 @@ import * as React from 'react'
 // this is here to fill in for the onChange handler
 // we're not using onChange because it seems to behave
 // differently in codesandbox and locally :shrug:
-const noop = () => {}
+const noop = () => {
+}
 
 class Switch extends React.Component {
   render() {

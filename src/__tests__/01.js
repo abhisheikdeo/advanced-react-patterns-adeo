@@ -8,8 +8,8 @@ import {
 import userEvent from '@testing-library/user-event'
 import * as userClient from '../user-client'
 import {AuthProvider} from '../auth-context'
-import App from '../final/01'
-// import App from '../exercise/01'
+// import App from '../final/01'
+import App from '../exercise/01'
 
 jest.mock('../user-client', () => {
   return {updateUser: jest.fn(() => Promise.resolve())}
@@ -132,7 +132,8 @@ test('failure works', async () => {
 
   await act(async () => {
     defer1.reject({message: testErrorMessage})
-    await defer1.promise.catch(() => {})
+    await defer1.promise.catch(() => {
+    })
   })
   // await waitForLoading()
 

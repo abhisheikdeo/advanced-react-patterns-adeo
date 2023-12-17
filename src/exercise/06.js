@@ -6,8 +6,8 @@ import {Switch} from '../switch'
 
 const callAll =
   (...fns) =>
-  (...args) =>
-    fns.forEach(fn => fn?.(...args))
+    (...args) =>
+      fns.forEach(fn => fn?.(...args))
 
 const actionTypes = {
   toggle: 'toggle',
@@ -29,14 +29,14 @@ function toggleReducer(state, {type, initialState}) {
 }
 
 function useToggle({
-  initialOn = false,
-  reducer = toggleReducer,
-  // 🐨 add an `onChange` prop.
-  // 🐨 add an `on` option here
-  // 💰 you can alias it to `controlledOn` to avoid "variable shadowing."
-} = {}) {
+                     initialOn = false,
+                     reducer = toggleReducer,
+                     // 🐨 add an `onChange` prop.
+                     // 🐨 add an `on` option here
+                     // 💰 you can alias it to `controlledOn` to avoid "variable shadowing."
+                   } = {}) {
   const {current: initialState} = React.useRef({on: initialOn})
-  const [state, dispatch] = React.useReducer(reducer, initialState)
+  const [ state, dispatch ] = React.useReducer(reducer, initialState)
   // 🐨 determine whether on is controlled and assign that to `onIsControlled`
   // 💰 `controlledOn != null`
 
@@ -108,8 +108,8 @@ function Toggle({on: controlledOn, onChange, initialOn, reducer}) {
 }
 
 function App() {
-  const [bothOn, setBothOn] = React.useState(false)
-  const [timesClicked, setTimesClicked] = React.useState(0)
+  const [ bothOn, setBothOn ] = React.useState(false)
+  const [ timesClicked, setTimesClicked ] = React.useState(0)
 
   function handleToggleChange(state, action) {
     if (action.type === actionTypes.toggle && timesClicked > 4) {
